@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="robots" content="noindex, nofollow">
+  <title>Matrículas Abertas — ELITE TJ-AM</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      background-color: #0a0a0a;
+      min-height: 100vh;
+      font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Arial, sans-serif;
+      color: #ffffff;
+      padding: 24px 16px 48px;
+    }
+
+    .container {
+      width: 100%;
+      max-width: 860px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 28px;
+    }
+
+    .aviso-topo {
+      color: #d1d5db;
+      font-size: 15px;
+      text-align: center;
+      background: #161616;
+      border: 1px solid #262626;
+      border-radius: 999px;
+      padding: 10px 22px;
+    }
+
+    .video-wrapper {
+      width: 100%;
+    }
+
+    /* ===== Seção de matrícula (aparece no tempo do vídeo) ===== */
+    .matricula {
+      display: none;
+      width: 100%;
+      flex-direction: column;
+      align-items: center;
+      gap: 22px;
+      opacity: 0;
+      transform: translateY(12px);
+      transition: opacity .6s ease, transform .6s ease;
+    }
+
+    .matricula.visivel { display: flex; }
+    .matricula.animar { opacity: 1; transform: translateY(0); }
+
+    .matricula h2 {
+      font-size: 26px;
+      font-weight: 800;
+      text-align: center;
+      letter-spacing: .3px;
+    }
+
+    .planos {
+      width: 100%;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .plano {
+      background: #141414;
+      border: 1px solid #2a2a2a;
+      border-radius: 16px;
+      padding: 28px 24px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+      gap: 14px;
+      position: relative;
+    }
+
+    .plano.destaque {
+      border: 2px solid #22c55e;
+      background: #10190f;
+      box-shadow: 0 8px 32px rgba(34, 197, 94, .18);
+    }
+
+    .badge-popular {
+      position: absolute;
+      top: -14px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+      color: #ffffff;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 1px;
+      padding: 6px 18px;
+      border-radius: 999px;
+      white-space: nowrap;
+    }
+
+    .plano .nome {
+      font-size: 18px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      margin-top: 6px;
+    }
+
+    .plano .forma {
+      font-size: 14px;
+      color: #9ca3af;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+
+    .plano .preco {
+      font-size: 34px;
+      font-weight: 900;
+      line-height: 1.1;
+    }
+
+    .plano.destaque .preco { color: #22c55e; }
+
+    .plano .detalhe {
+      font-size: 14px;
+      color: #d1d5db;
+    }
+
+    .btn-matricula {
+      display: block;
+      width: 100%;
+      color: #ffffff;
+      text-decoration: none;
+      text-align: center;
+      font-size: 17px;
+      font-weight: 800;
+      letter-spacing: .5px;
+      padding: 18px 20px;
+      border-radius: 12px;
+      margin-top: auto;
+    }
+
+    .btn-verde {
+      background: linear-gradient(180deg, #22c55e 0%, #15803d 100%);
+      box-shadow: 0 8px 24px rgba(34, 197, 94, .35);
+      animation: pulsar 1.8s ease-in-out infinite;
+    }
+
+    .btn-cinza {
+      background: #262626;
+      border: 1px solid #3f3f3f;
+    }
+
+    .btn-matricula:hover { filter: brightness(1.08); }
+
+    @keyframes pulsar {
+      0%, 100% { transform: scale(1); }
+      50% { transform: scale(1.03); }
+    }
+
+    .seguranca {
+      font-size: 13px;
+      color: #6b7280;
+      text-align: center;
+    }
+
+    @media (max-width: 640px) {
+      .planos { grid-template-columns: 1fr; }
+      .matricula h2 { font-size: 22px; }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <div class="aviso-topo">▶ Assista ao vídeo até o final — as opções de matrícula serão liberadas</div>
+
+    <div class="video-wrapper">
+      <!-- ▼▼▼ COLE AQUI O CÓDIGO DO PLAYER VTURB (substitua este bloco placeholder inteiro) ▼▼▼ -->
+      <div id="placeholder-vturb" style="position: relative; width: 100%; padding: 56.25% 0 0; background-color: #000; border-radius: 12px; overflow: hidden;">
+        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #4b5563; font-size: 15px; letter-spacing: 1px;">VÍDEO — AGUARDANDO CÓDIGO VTURB</div>
+      </div>
+      <!-- ▲▲▲ FIM DO BLOCO DO VTURB ▲▲▲ -->
+    </div>
+
+    <div class="matricula" id="matricula">
+      <h2>Escolha sua forma de matrícula no ELITE TJ-AM</h2>
+
+      <div class="planos">
+        <div class="plano destaque">
+          <div class="badge-popular">⭐ MAIS POPULAR</div>
+          <div class="nome">ELITE TJ-AM</div>
+          <div class="forma">Cartão de crédito</div>
+          <div class="preco">R$ 1.297,00</div>
+          <div class="detalhe">A opção escolhida pela maioria dos aprovados — acesso liberado na hora</div>
+          <a class="btn-matricula btn-verde" href="https://pay.hub.la/FYH4uyDZy4NbJbmU8tf4">QUERO ME MATRICULAR NO CARTÃO</a>
+        </div>
+
+        <div class="plano">
+          <div class="nome">ELITE TJ-AM</div>
+          <div class="forma">Boleto ou Pix parcelado</div>
+          <div class="preco">R$ 1.597,00</div>
+          <div class="detalhe">Em até 10x no boleto ou Pix parcelado</div>
+          <a class="btn-matricula btn-cinza" href="https://pay.hub.la/dPVZZKkTpcFsH0GvClGX">MATRICULAR COM BOLETO / PIX</a>
+        </div>
+      </div>
+
+      <div class="seguranca">🔒 Pagamento 100% seguro processado pela Hubla</div>
+    </div>
+  </div>
+
+  <script>
+    // Momento do VÍDEO (não da página) em que as opções de matrícula aparecem.
+    // Ajustar quando o vídeo do Vturb for definido.
+    var SEGUNDOS_DO_VIDEO = 258;
+
+    var jaExibiu = false;
+    var tentativas = 0;
+
+    function exibirMatricula() {
+      if (jaExibiu) return;
+      jaExibiu = true;
+      var secao = document.getElementById("matricula");
+      secao.classList.add("visivel");
+      setTimeout(function () {
+        secao.classList.add("animar");
+      }, 50);
+    }
+
+    function vigiarProgressoDoVideo() {
+      if (typeof smartplayer === "undefined" || !(smartplayer.instances && smartplayer.instances.length)) {
+        // Player ainda não carregou; tenta por até 30s. Sem player (ex.: código
+        // do Vturb ainda não colado), libera os botões para a página não ficar quebrada.
+        if (tentativas >= 30) return exibirMatricula();
+        tentativas += 1;
+        return setTimeout(vigiarProgressoDoVideo, 1000);
+      }
+      var player = smartplayer.instances[0];
+      player.on("timeupdate", function () {
+        if (jaExibiu) return;
+        // No smart autoplay o vídeo roda mudo antes do clique; só conta após o play real.
+        if (player.smartAutoPlay && player.analytics && !player.analytics.hasStarted) return;
+        if (player.video.currentTime < SEGUNDOS_DO_VIDEO) return;
+        exibirMatricula();
+      });
+    }
+
+    vigiarProgressoDoVideo();
+  </script>
+</body>
+</html>
