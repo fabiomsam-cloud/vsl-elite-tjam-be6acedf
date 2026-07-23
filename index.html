@@ -40,20 +40,14 @@
       width: 100%;
     }
 
-    /* ===== Seção de matrícula (aparece no tempo do vídeo) ===== */
+    /* ===== Seção de matrícula (sempre visível) ===== */
     .matricula {
-      display: none;
+      display: flex;
       width: 100%;
       flex-direction: column;
       align-items: center;
       gap: 22px;
-      opacity: 0;
-      transform: translateY(12px);
-      transition: opacity .6s ease, transform .6s ease;
     }
-
-    .matricula.visivel { display: flex; }
-    .matricula.animar { opacity: 1; transform: translateY(0); }
 
     .matricula h2 {
       font-size: 26px;
@@ -177,7 +171,7 @@
 </head>
 <body>
   <div class="container">
-    <div class="aviso-topo">▶ Assista ao vídeo até o final — as opções de matrícula serão liberadas</div>
+    <div class="aviso-topo">▶ Assista ao vídeo e escolha abaixo sua forma de matrícula</div>
 
     <div class="video-wrapper">
       <!-- ▼▼▼ COLE AQUI O CÓDIGO DO PLAYER VTURB (substitua este bloco placeholder inteiro) ▼▼▼ -->
@@ -213,43 +207,5 @@
     </div>
   </div>
 
-  <script>
-    // Momento do VÍDEO (não da página) em que as opções de matrícula aparecem.
-    // Ajustar quando o vídeo do Vturb for definido.
-    var SEGUNDOS_DO_VIDEO = 258;
-
-    var jaExibiu = false;
-    var tentativas = 0;
-
-    function exibirMatricula() {
-      if (jaExibiu) return;
-      jaExibiu = true;
-      var secao = document.getElementById("matricula");
-      secao.classList.add("visivel");
-      setTimeout(function () {
-        secao.classList.add("animar");
-      }, 50);
-    }
-
-    function vigiarProgressoDoVideo() {
-      if (typeof smartplayer === "undefined" || !(smartplayer.instances && smartplayer.instances.length)) {
-        // Player ainda não carregou; tenta por até 30s. Sem player (ex.: código
-        // do Vturb ainda não colado), libera os botões para a página não ficar quebrada.
-        if (tentativas >= 30) return exibirMatricula();
-        tentativas += 1;
-        return setTimeout(vigiarProgressoDoVideo, 1000);
-      }
-      var player = smartplayer.instances[0];
-      player.on("timeupdate", function () {
-        if (jaExibiu) return;
-        // No smart autoplay o vídeo roda mudo antes do clique; só conta após o play real.
-        if (player.smartAutoPlay && player.analytics && !player.analytics.hasStarted) return;
-        if (player.video.currentTime < SEGUNDOS_DO_VIDEO) return;
-        exibirMatricula();
-      });
-    }
-
-    vigiarProgressoDoVideo();
-  </script>
 </body>
 </html>
