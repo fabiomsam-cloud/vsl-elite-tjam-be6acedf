@@ -99,11 +99,12 @@
 <body>
   <div class="container">
     <div class="video-wrapper">
-      <!-- ▼▼▼ COLE AQUI O CÓDIGO DO PLAYER VTURB (substitua este bloco placeholder inteiro) ▼▼▼ -->
-      <div id="placeholder-vturb" style="position: relative; width: 100%; padding: 56.25% 0 0; background-color: #000; border-radius: 12px; overflow: hidden;">
-        <div style="position: absolute; inset: 0; display: flex; align-items: center; justify-content: center; color: #4b5563; font-size: 15px; letter-spacing: 1px;">VÍDEO — AGUARDANDO CÓDIGO VTURB</div>
-      </div>
-      <!-- ▲▲▲ FIM DO BLOCO DO VTURB ▲▲▲ -->
+      <vturb-smartplayer id="vid-6a6279e9d94d77cf3613eaed" style="display: block; margin: 0 auto; width: 100%;"><div class="vturb-player-placeholder" style="position: relative; width: 100%; padding: 56.25% 0 0; z-index: 0; background-color: black;"></div></vturb-smartplayer>
+      <script type="text/javascript">
+        var s = document.createElement("script");
+        s.src = "https://scripts.converteai.net/98f98845-02a5-4e75-a39a-bbafedfa3212/players/6a6279e9d94d77cf3613eaed/v4/player.js",
+        s.async = !0, document.head.appendChild(s);
+      </script>
     </div>
 
     <div class="botoes" id="botoes">
@@ -113,9 +114,8 @@
   </div>
 
   <script>
-    // Momento do VÍDEO (não da página) em que os botões aparecem.
-    // Ajustar quando o vídeo do Vturb for definido.
-    var SEGUNDOS_DO_VIDEO = 258;
+    // Momento do VÍDEO (não da página) em que os botões aparecem: 5min45s = 345s.
+    var SEGUNDOS_DO_VIDEO = 345;
 
     var jaExibiu = false;
     var tentativas = 0;
